@@ -1,6 +1,13 @@
-export const Header = () => (
-  <div className="mx-auto text-center">
-    <h1 className="text-6xl font-bold">NUMBER</h1>
-    <h2 className="text-2xl">Guess Today's Number!</h2>
-  </div>
-);
+import { getDayOfGame } from "../service/number";
+
+export const Header = () => {
+  const day = getDayOfGame();
+
+  return (
+    <div className="mx-auto text-center">
+      <h1 className="text-6xl font-bold">NUMBER</h1>
+      <h2 className="text-2xl">You Get One Guess</h2>
+      <h2 className="text-xl">{`Day ${day}`}</h2>
+    </div>
+  );
+};
