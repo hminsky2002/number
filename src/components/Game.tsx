@@ -61,8 +61,8 @@ export const Game = () => {
           </div>
         </div>
       )}
-      {guessed && correct && <Score result={true} answer={inputValue} />}
-      {guessed && !correct && <Score result={false} answer={inputValue} />}
+      {guessed && correct && <Score result={true} answer={answer} />}
+      {guessed && !correct && <Score result={false} answer={answer} />}
     </div>
   );
 };
