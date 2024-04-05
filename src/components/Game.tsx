@@ -40,20 +40,20 @@ export const Game = () => {
             {digits.map((digit) => (
               <button
                 key={digit}
-                className=" transition-all border-2 bg-gray-300 p-2 hover:bg-gray-400"
+                className=" transition-all border-2 bg-gray-300 p-2 hover:bg-gray-400 font-semibold"
                 onClick={() => handleSquareClick(digit)}
               >
                 {digit}
               </button>
             ))}
             <button
-              className="transition-all border-2 bg-red-500 p-2 hover:bg-red-600"
+              className="transition-all border-2 bg-red-500 p-2 hover:bg-red-600 font-semibold"
               onClick={() => handleDelete()}
             >
               DEL
             </button>
             <button
-              className=" transition-all border-2 border-green-300 bg-green-300 p-2 hover:bg-green-400"
+              className=" transition-all border-2 border-green-300 bg-green-300 p-2 hover:bg-green-400 font-semibold"
               onClick={() => handleSubmit(inputValue)}
             >
               SUB
