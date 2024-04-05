@@ -47,7 +47,7 @@ export const Game = () => {
               </button>
             ))}
             <button
-              className="transition-all border-2 bg-gray-300 p-2 hover:bg-gray-400"
+              className="transition-all border-2 bg-red-500 p-2 hover:bg-red-600"
               onClick={() => handleDelete()}
             >
               DEL
