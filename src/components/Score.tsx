@@ -17,7 +17,8 @@ export const Score = ({ result, answer }: ScoreProps) => {
         </h1>
       )}
       <h2 className="text-2xl">The correct number was {answer}</h2>
-      <h2 className="text-xl">{`${hours} hours till the next number`}</h2>
+      <h2 className="text-2xl">{`${hours} hours till the next number`}</h2>
+      <h2 className="text-2xl font-semibold mt-2">Todays guess statistics!</h2>
     </div>
   );
 };

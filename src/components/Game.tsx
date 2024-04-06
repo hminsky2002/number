@@ -4,6 +4,7 @@ import { Score } from "./Score";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { app } from "../firebase";
 import { getDayOfGame } from "../service/number";
+import { Stats } from "./Stats";
 
 const db = getFirestore(app);
 
@@ -71,8 +72,18 @@ export const Game = () => {
           </div>
         </div>
       )}
-      {guessed && correct && <Score result={true} answer={answer} />}
-      {guessed && !correct && <Score result={false} answer={answer} />}
+      {guessed && correct && (
+        <>
+          <Score result={true} answer={answer} />
+          <Stats />
+        </>
+      )}
+      {guessed && !correct && (
+        <>
+          <Score result={false} answer={answer} />
+          <Stats />
+        </>
+      )}
     </div>
   );
 };
