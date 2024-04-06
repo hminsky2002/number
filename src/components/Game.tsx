@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { getNumber } from "../service/number";
 import { Score } from "./Score";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { app } from "../firebase";
+import { getDayOfGame } from "../service/number";
+
+const db = getFirestore(app);
 
 export const Game = () => {
   const answer = getNumber();
@@ -22,11 +27,16 @@ export const Game = () => {
     }
   };
 
-  const handleSubmit = (value: string) => {
+  const handleSubmit = async (value: string) => {
+    const id = Date.now();
     setGuessed(true);
     if (value === answer) {
       setCorrect(true);
     }
+    await setDoc(doc(db, "guess", id.toString()), {
+      number: value,
+      day: getDayOfGame(),
+    });
   };
   const digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   return (
