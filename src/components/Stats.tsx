@@ -9,7 +9,8 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { app } from "../firebase";
-import { getDayOfGame, getNumber } from "../service/number";
+import { getDayOfGame } from "../service/number";
+import { Square } from "./Square";
 
 const db = getFirestore(app);
 
@@ -43,32 +44,19 @@ export const Stats = () => {
     fetchGuessesForToday().catch(console.error);
   }, []);
 
-  const getColorForCount = (number: string, count: number): string => {
-    if (number == getNumber()) {
-      return "bg-green-300";
-    }
-    if (count <= 1) return "bg-red-100";
-    if (count <= 2) return "bg-red-200";
-    if (count <= 3) return "bg-red-300";
-    if (count <= 4) return "bg-red-400";
-    return "bg-red-500";
-  };
-
   const sortedGuessCounts = Object.entries(guessCounts).sort(
     (a, b) => b[1] - a[1],
   );
 
   return (
     <div className="flex justify-center items-center">
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1 mx-auto max-w-sm">
-        {sortedGuessCounts.map(([number, count]) => (
-          <div
-            key={number}
-            className={`w-12 h-12 flex items-center justify-center rounded shadow transform transition duration-150 ease-in-out hover:scale-105 ${getColorForCount(number, count)}`}
-          >
-            <p>{number}</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1 mx-auto max-w-sm mt-4">
+        {sortedGuessCounts.map(
+          ([number, count]) =>
+            number !== "" && (
+              <Square key={number} number={number} count={count} />
+            ),
+        )}
       </div>
     </div>
   );
